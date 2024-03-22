@@ -1,8 +1,7 @@
 <?php
 
-namespace Callmeaf\Auth;
+namespace Callmeaf\Kavenegar;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
 class CallmeafKavenegarServiceProvider extends ServiceProvider

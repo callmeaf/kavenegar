@@ -3,7 +3,8 @@
     "description": "Kavenegar Sms Service",
     "type": "library",
     "require": {
-        "callmeaf/base": "dev-master"
+        "callmeaf/base": "dev-master",
+        "callmeaf/sms": "dev-master"
     },
     "license": "MIT",
     "autoload": {

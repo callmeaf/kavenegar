@@ -3,10 +3,9 @@
 namespace Callmeaf\Kavenegar\Services\V1\Contracts;
 
 
-use Illuminate\Http\Client\Response;
+use Callmeaf\Sms\Services\V1\Contracts\SmsServiceInterface;
 
-interface KavenegarServiceInterface
+interface KavenegarServiceInterface extends SmsServiceInterface
 {
-    public function getApiUrl(): string;
-    public function sendViaPattern(string $pattern,string $mobile,array $values): Response;
+
 }
