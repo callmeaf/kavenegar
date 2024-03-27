@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'api_key' => '645978313942553750785A5330317A50383042486E64575A737A3574316C4369387A6E6B69557A746878413D',
+    'api_key' => '',
+    'api_url' => 'https://api.kavenegar.com/v1',
     'patterns' => [
         'verify_otp' => [
             'template' => 'verifyotp',
             'keys' => [
                 'token',
-                'token1',
                 'token2',
                 'token3',
             ],
