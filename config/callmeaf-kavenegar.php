@@ -12,5 +12,13 @@ return [
                 'token3',
             ],
         ],
+        'welcome' => [
+            'template' => 'welcome',
+            'keys' => [
+                'token',
+                'token2',
+                'token3',
+            ],
+        ],
     ],
 ];

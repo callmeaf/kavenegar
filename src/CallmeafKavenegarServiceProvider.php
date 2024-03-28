@@ -22,4 +22,5 @@ class CallmeafKavenegarServiceProvider extends ServiceProvider
             self::CONFIGS_DIR . '/callmeaf-kavenegar.php' => config_path('callmeaf-kavenegar.php'),
         ],self::CONFIG_GROUP);
     }
+
 }

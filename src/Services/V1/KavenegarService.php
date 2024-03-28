@@ -26,6 +26,41 @@ class KavenegarService extends SmsService implements KavenegarServiceInterface
         return Http::baseUrl($this->getApiUrl('/' . $this->getApiKey()));
     }
 
+    public function send(string $mobile, string $message): Response
+    {
+        $data = [
+            'receptor' => $mobile,
+            'message' => $message,
+        ];
+        $response =  $this->http()->get('/sms/send.json',$data);
+
+        $body = json_decode($response->body(),true);
+        $result = $body['return'];
+        if(@$result['status'] !== '200') {
+            throw new \Exception(@$result['message'] ?? __('callmeaf-base::v1.unknown_error'));
+        }
+
+        return $response;
+    }
+
+   public function multiSend(array $mobiles, array $messages, array $senders): Response
+   {
+       $data = [
+           'receptor' => $mobiles,
+           'sender' => $senders,
+           'message' => $messages,
+       ];
+       $response =  $this->http()->get('/sms/sendarray.json',$data);
+
+       $body = json_decode($response->body(),true);
+       $result = $body['return'];
+       if(@$result['status'] !== '200') {
+           throw new \Exception(@$result['message'] ?? __('callmeaf-base::v1.unknown_error'));
+       }
+
+       return $response;
+   }
+
     public function sendViaPattern(string $pattern, string $mobile, array $values): Response
     {
         $keys = config('callmeaf-kavenegar.patterns.verify_otp.keys');
@@ -40,9 +75,6 @@ class KavenegarService extends SmsService implements KavenegarServiceInterface
             $data[$keys[$index]] = $value;
         }
         $response =  $this->http()->get('/verify/lookup.json',$data);
-        Log::alert(json_encode($response->headers()));
-        Log::alert($response->body());
-        Log::alert($response->status());
 
         $body = json_decode($response->body(),true);
         $result = $body['return'];
