@@ -89,4 +89,9 @@ class KavenegarService extends SmsService implements KavenegarServiceInterface
     {
         return config('callmeaf-kavenegar.patterns.verify_otp.template');
     }
+
+    public function verifyForgotPasswordCodePattern(): string
+    {
+        return config('callmeaf-kavenegar.patterns.verify_forgot_password_code.template');
+    }
 }

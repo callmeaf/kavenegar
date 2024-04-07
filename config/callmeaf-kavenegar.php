@@ -20,5 +20,13 @@ return [
                 'token3',
             ],
         ],
+        'verify_forgot_password_code' => [
+            'template' => 'forgot_password_code',
+            'keys' => [
+                'token',
+                'token2',
+                'token3',
+            ],
+        ],
     ],
 ];
