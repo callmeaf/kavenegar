@@ -7,7 +7,6 @@ use Callmeaf\Sms\Services\V1\SmsService;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class KavenegarService extends SmsService implements KavenegarServiceInterface
 {
@@ -43,12 +42,12 @@ class KavenegarService extends SmsService implements KavenegarServiceInterface
         return $response;
     }
 
-   public function multiSend(array $mobiles, array $messages, array $senders): Response
+   public function multiSend(array|string $mobiles, array|string $messages, array|string $senders): Response
    {
        $data = [
-           'receptor' => $mobiles,
-           'sender' => $senders,
-           'message' => $messages,
+           'receptor' => is_array($mobiles) ? $mobiles : [$mobiles],
+           'sender' => is_array($senders) ? $senders : [$senders],
+           'message' => is_array($messages) ? $messages : [$messages],
        ];
        $response =  $this->http()->get('/sms/sendarray.json',$data);
 
